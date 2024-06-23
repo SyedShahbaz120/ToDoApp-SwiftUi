@@ -8,6 +8,7 @@ struct HomeView: View {
     @Query var reminderList: [ReminderList]
     @State private var path = [ReminderList]()
     
+    //this will allow user create and view a new entry of userful data
     let columns = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
