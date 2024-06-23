@@ -4,8 +4,8 @@ ToDoApp-SwiftUI is a robust task management application developed using SwiftUI 
 
 ## Group S 2 G 8
 - Syed Shahbaz (1195561)
-- Anyang Ren (1180042)
 - Urvish Patel (1192982)
+- Anyang Ren (1180042)
 
 ## Features
 
