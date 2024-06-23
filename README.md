@@ -19,3 +19,11 @@ ToDoApp-SwiftUI is a robust task management application developed using SwiftUI 
 
 ### Displaying Data in a New Useful Way Like Color-Coding Text or Displaying a Graph
 - Utilizes color-coding to visually differentiate data entries based on categories or importance.
+### User Interface Features
+•⁠  ⁠Utilizes SwiftUI for a modern and intuitive user interface.
+•⁠  ⁠Supports gestures and animations for enhanced user interaction.
+### Data Persistence
+•⁠  ⁠Uses CoreData for data storage and management.
+•⁠  ⁠Ensures tasks are saved locally and retrieved across app launches.
+### Allowing the User to Search for Something
+•⁠  ⁠Enables users to search for specific tasks or entries within the app.
