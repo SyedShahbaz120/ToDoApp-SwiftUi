@@ -30,5 +30,7 @@ ToDoApp-SwiftUI is a robust task management application developed using SwiftUI 
 
 ### Displaying a Notification When Something Important Happens in the Background
 •⁠  ⁠Notifies users of critical updates or events even when the app is in the background.
+### Allowing the User to Update App Preferences like Enabling Dark Mode
+•⁠  ⁠Provides options for users to personalize their app experience by switching to dark mode or other preferences.
 
 
