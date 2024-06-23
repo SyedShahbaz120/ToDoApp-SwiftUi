@@ -70,6 +70,7 @@ struct HomeView: View {
         }
     }
     
+   //this allowed user add and delete task
     func addSection() {
         let section = ReminderList()
         modelContext.insert(section)
