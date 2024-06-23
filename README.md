@@ -34,5 +34,7 @@ ToDoApp-SwiftUI is a robust task management application developed using SwiftUI 
 •⁠  ⁠Provides options for users to personalize their app experience by switching to dark mode or other preferences.
 ### Timer Feature
 •⁠  ⁠Allows users to set timers for tasks or activities, enhancing productivity management.
+### Urgent Task Feature
+•⁠  ⁠Highlights urgent tasks or deadlines for better prioritization.
 
 
