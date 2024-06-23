@@ -5,6 +5,7 @@ import SwiftData
 struct ReminderListRowView: View {
     @Bindable var reminderList: ReminderList
     
+   //this allowed user to add and delete task
     var body: some View {
         HStack {
             listIcon

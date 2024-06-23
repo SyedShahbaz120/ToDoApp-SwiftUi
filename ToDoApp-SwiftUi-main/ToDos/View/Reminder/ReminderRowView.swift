@@ -6,6 +6,7 @@ struct ReminderRowView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var reminder: Reminder
     
+    //this is allowed user to add and delete task
     var body: some View {
         HStack {
             Button {
