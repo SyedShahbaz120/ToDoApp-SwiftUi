@@ -28,3 +28,7 @@ ToDoApp-SwiftUI is a robust task management application developed using SwiftUI 
 •⁠  ⁠Uses CoreData for data storage and management.
 •⁠  ⁠Ensures tasks are saved locally and retrieved across app launches.
 
+### Displaying a Notification When Something Important Happens in the Background
+•⁠  ⁠Notifies users of critical updates or events even when the app is in the background.
+
+
