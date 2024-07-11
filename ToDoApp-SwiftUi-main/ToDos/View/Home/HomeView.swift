@@ -7,18 +7,23 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var reminderList: [ReminderList]
     @State private var path = [ReminderList]()
+    @State private var searchText = ""
     
-    //this will allow user create and view a new entry of userful data
+    // This will allow user to create and view a new entry of useful data
     let columns = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
+                // Add Search Bar
+                SearchBar(text: $searchText)
+                    .padding(.horizontal)
+                
                 List {
                     Section {
                         VStack {
                             LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(reminderList.prefix(4)) { reminders in
+                                ForEach(filteredReminders.prefix(4)) { reminders in
                                     ListCardView(reminderList: reminders)
                                 }
                             }
@@ -28,7 +33,7 @@ struct HomeView: View {
                     .listRowInsets(EdgeInsets())
                     
                     Section {
-                        ForEach(reminderList) { reminders in
+                        ForEach(filteredReminders) { reminders in
                             NavigationLink {
                                 ReminderListView(reminderList: reminders)
                             } label: {
@@ -71,7 +76,7 @@ struct HomeView: View {
         }
     }
     
-   //this allowed user add and delete task
+    // This allows the user to add and delete tasks
     func addSection() {
         let section = ReminderList()
         modelContext.insert(section)
@@ -82,6 +87,15 @@ struct HomeView: View {
         for index in indexSet {
             let reminderLists = reminderList[index]
             modelContext.delete(reminderLists)
+        }
+    }
+    
+    // Filtering logic
+    var filteredReminders: [ReminderList] {
+        if searchText.isEmpty {
+            return reminderList
+        } else {
+            return reminderList.filter { $0.name.localizedCaseInsensitiveContains(searchText) || $0.reminder.contains { $0.name.localizedCaseInsensitiveContains(searchText) } }
         }
     }
 }
