@@ -26,7 +26,7 @@ struct ReminderRowView: View {
         }
         .padding(.vertical, 8)
     }
-    
+    //this is a test
     var filledReminderLabel: some View {
         Circle()
             .stroke(Color.primary, lineWidth: 2)
