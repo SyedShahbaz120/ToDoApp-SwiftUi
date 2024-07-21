@@ -1,18 +1,21 @@
 //Created By S2G8 
-
 import SwiftUI
 import SwiftData
-
 struct ReminderListView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var reminderList: ReminderList
     @State private var searchText = ""
-    
+
+    var filteredReminders: [Reminder] {
+        if searchText.isEmpty {
+            return reminderList.reminder
+        } else {
+            return reminderList.reminder.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SearchBar(text: $searchText)
-                .padding(.horizontal)
-            
             HStack {
                 Text(reminderList.name)
                     .font(.largeTitle)
@@ -25,9 +28,12 @@ struct ReminderListView: View {
             }
             .padding(.horizontal)
             
+            SearchBar(text: $searchText)
+                .padding()
+
             List {
-                ForEach(filteredReminders) { reminders in
-                    ReminderRowView(reminder: reminders)
+                ForEach(filteredReminders) { reminder in
+                    ReminderRowView(reminder: reminder)
                 }
                 .onDelete(perform: delete)
             }
@@ -53,20 +59,11 @@ struct ReminderListView: View {
         .padding(.vertical)
         .background(Color(UIColor.systemGroupedBackground))
     }
-    
+
     func delete(_ indexSet: IndexSet) {
         for index in indexSet {
             reminderList.reminder.remove(at: index)
         }
         try! modelContext.save()
-    }
-    
-    // Filtering logic
-    var filteredReminders: [Reminder] {
-        if searchText.isEmpty {
-            return reminderList.reminder
-        } else {
-            return reminderList.reminder.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-        }
     }
 }
