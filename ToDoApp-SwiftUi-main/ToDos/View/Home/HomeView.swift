@@ -9,7 +9,9 @@ struct HomeView: View {
     @State private var path = [ReminderList]()
     @State private var searchText = ""
     
-    // This will allow user to create and view a new entry of useful data
+ /* This will allow user to create and view a new entry of useful data
+ Issue #1
+ */
     let columns = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
