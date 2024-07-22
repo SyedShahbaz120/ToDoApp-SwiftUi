@@ -18,6 +18,8 @@
 		5B9747A42B6EC36900CBC46D /* ReminderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A32B6EC36900CBC46D /* ReminderRowView.swift */; };
 		5B9747A82B6EC76E00CBC46D /* ListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A72B6EC76E00CBC46D /* ListCardView.swift */; };
 		5B9747AA2B6ECB2C00CBC46D /* CreateSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */; };
+		5C49FF922C4DF448000F2767 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49FF912C4DF448000F2767 /* SearchBar.swift */; };
+		5C49FF942C4DF486000F2767 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49FF932C4DF486000F2767 /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		5B9747A32B6EC36900CBC46D /* ReminderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRowView.swift; sourceTree = "<group>"; };
 		5B9747A72B6EC76E00CBC46D /* ListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardView.swift; sourceTree = "<group>"; };
 		5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSectionView.swift; sourceTree = "<group>"; };
+		5C49FF912C4DF448000F2767 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		5C49FF932C4DF486000F2767 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */,
 				5B97479F2B6EBD0900CBC46D /* ReminderListRowView.swift */,
 				5B9747A72B6EC76E00CBC46D /* ListCardView.swift */,
+				5C49FF912C4DF448000F2767 /* SearchBar.swift */,
+				5C49FF932C4DF486000F2767 /* GraphView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -193,10 +199,12 @@
 				5B9747A22B6EBF8A00CBC46D /* ReminderListView.swift in Sources */,
 				5B9747AA2B6ECB2C00CBC46D /* CreateSectionView.swift in Sources */,
 				5B9747A42B6EC36900CBC46D /* ReminderRowView.swift in Sources */,
+				5C49FF942C4DF486000F2767 /* GraphView.swift in Sources */,
 				5B97479A2B6EBB3F00CBC46D /* Reminder.swift in Sources */,
 				5B9747A02B6EBD0900CBC46D /* ReminderListRowView.swift in Sources */,
 				5B9747842B6EB65800CBC46D /* HomeView.swift in Sources */,
 				5B9747822B6EB65800CBC46D /* ToDosApp.swift in Sources */,
+				5C49FF922C4DF448000F2767 /* SearchBar.swift in Sources */,
 				5B9747A82B6EC76E00CBC46D /* ListCardView.swift in Sources */,
 				5B97479C2B6EBBB100CBC46D /* ReminderList.swift in Sources */,
 			);
