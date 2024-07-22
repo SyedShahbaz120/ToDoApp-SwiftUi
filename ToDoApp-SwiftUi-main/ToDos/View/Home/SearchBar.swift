@@ -1,3 +1,12 @@
+////
+////  SearchBar.swift
+////  ToDos
+////
+////  Created by Urvish Patel on 2024-07-21.
+////
+//
+//import Foundation
+
 //
 //  SearchBar.swift
 //  ToDos
@@ -35,3 +44,4 @@ struct SearchBar: UIViewRepresentable {
         uiView.text = text
     }
 }
+
