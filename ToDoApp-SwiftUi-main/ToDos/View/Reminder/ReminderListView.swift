@@ -1,140 +1,110 @@
-////Created By S2G8 
-//import SwiftUI
-//import SwiftData
-//struct ReminderListView: View {
-//    @Environment(\.modelContext) var modelContext
-//    @Bindable var reminderList: ReminderList
-//    @State private var searchText = ""
-//
-//    var filteredReminders: [Reminder] {
-//        if searchText.isEmpty {
-//            return reminderList.reminder
-//        } else {
-//            return reminderList.reminder.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-//        }
-//    }
-//
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: 10) {
-//            HStack {
-//                Text(reminderList.name)
-//                    .font(.largeTitle)
-//                    .foregroundColor(.primary)
-//                    .bold()
-//                Spacer()
-//                Text("\(filteredReminders.count)")
-//                    .font(.title)
-//                    .foregroundColor(.secondary)
-//            }
-//            .padding(.horizontal)
-//            
-//            SearchBar(text: $searchText)
-//                .padding()
-//
-//            List {
-//                ForEach(filteredReminders) { reminder in
-//                    ReminderRowView(reminder: reminder)
-//                }
-//                .onDelete(perform: delete)
-//            }
-//            .listStyle(InsetListStyle())
-//        }
-//        .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//            ToolbarItemGroup(placement: .bottomBar) {
-//                Button {
-//                    reminderList.reminder.append(Reminder(name: ""))
-//                } label: {
-//                    HStack(spacing: 7) {
-//                        Image(systemName: "plus.circle.fill")
-//                        Text("New Reminder")
-//                            .font(.body)
-//                            .bold()
-//                            .foregroundColor(.primary)
-//                    }
-//                }
-//                Spacer()
-//            }
-//        }
-//        .padding(.vertical)
-//        .background(Color(UIColor.systemGroupedBackground))
-//    }
-//
-//    func delete(_ indexSet: IndexSet) {
-//        for index in indexSet {
-//            reminderList.reminder.remove(at: index)
-//        }
-//        try! modelContext.save()
-//    }
-//}
-
-//Created By S2G8
 import SwiftUI
 import SwiftData
-struct ReminderListView: View {
-    @Environment(\.modelContext) var modelContext
-    @Bindable var reminderList: ReminderList
-    @State private var searchText = ""
 
-    var filteredReminders: [Reminder] {
-        if searchText.isEmpty {
-            return reminderList.reminder
-        } else {
-            return reminderList.reminder.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-        }
-    }
+struct ReminderListView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Bindable var reminderList: ReminderList
+    @State private var newReminderName = ""
+    @State private var showEditView = false
+    @State private var editedReminder: Reminder?
+    @State private var editText = ""
+    @State private var isUrgent = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack {
             HStack {
-                Text(reminderList.name)
-                    .font(.largeTitle)
-                    .foregroundColor(.primary)
-                    .bold()
-                Spacer()
-                Text("\(filteredReminders.count)")
-                    .font(.title)
-                    .foregroundColor(.secondary)
+                TextField("New reminder", text: $newReminderName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button(action: addReminder) {
+                    Image(systemName: "plus")
+                        .foregroundColor(.blue)
+                        .padding(8)
+                        .background(Circle().fill(Color(UIColor.systemGray5)))
+                }
             }
-            .padding(.horizontal)
-            
-            SearchBar(text: $searchText)
-                .padding()
+            .padding()
 
             List {
-                ForEach(filteredReminders) { reminder in
-                    ReminderRowView(reminder: reminder)
-                }
-                .onDelete(perform: delete)
-            }
-            .listStyle(InsetListStyle())
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button {
-                    reminderList.reminder.append(Reminder(name: ""))
-                } label: {
-                    HStack(spacing: 7) {
-                        Image(systemName: "plus.circle.fill")
-                        Text("New Reminder")
-                            .font(.body)
-                            .bold()
-                            .foregroundColor(.primary)
+                ForEach(reminderList.reminder) { reminder in
+                    HStack {
+                        Button(action: {
+                            toggleReminder(reminder)
+                        }) {
+                            Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
+                                .foregroundColor(reminder.isCompleted ? .green : .gray)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+
+                        Text(reminder.name)
+                            .strikethrough(reminder.isCompleted, color: .gray)
+                            .foregroundColor(reminder.isCompleted ? .gray : .primary)
+
+                        Spacer()
+
+                        if reminder.isUrgent {
+                            Text("Urgent")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.red)
+                        }
+
+                        Button(action: {
+                            editReminder(reminder)
+                        }) {
+                            Image(systemName: "pencil")
+                                .foregroundColor(.blue)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
-                Spacer()
+                .onDelete(perform: deleteReminder)
             }
         }
-        .padding(.vertical)
-        .background(Color(UIColor.systemGroupedBackground))
+        .navigationTitle(reminderList.name)
+        .sheet(isPresented: $showEditView) {
+            VStack {
+                TextField("Edit reminder", text: $editText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Toggle("Mark as Urgent", isOn: $isUrgent)
+                    .padding()
+                Button("Save") {
+                    saveEdit()
+                }
+                .padding()
+            }
+        }
     }
 
-    func delete(_ indexSet: IndexSet) {
-        for index in indexSet {
-            reminderList.reminder.remove(at: index)
+    func addReminder() {
+        guard !newReminderName.isEmpty else { return }
+        let reminder = Reminder(name: newReminderName)
+        reminderList.reminder.append(reminder)
+        newReminderName = ""
+    }
+
+    func toggleReminder(_ reminder: Reminder) {
+        if let index = reminderList.reminder.firstIndex(where: { $0.id == reminder.id }) {
+            reminderList.reminder[index].isCompleted.toggle()
         }
-        try! modelContext.save()
+    }
+
+    func deleteReminder(at offsets: IndexSet) {
+        reminderList.reminder.remove(atOffsets: offsets)
+    }
+
+    func editReminder(_ reminder: Reminder) {
+        editedReminder = reminder
+        editText = reminder.name
+        isUrgent = reminder.isUrgent
+        showEditView = true
+    }
+
+    func saveEdit() {
+        if let reminder = editedReminder, let index = reminderList.reminder.firstIndex(where: { $0.id == reminder.id }) {
+            reminderList.reminder[index].name = editText
+            reminderList.reminder[index].isUrgent = isUrgent
+        }
+        showEditView = false
     }
 }
-

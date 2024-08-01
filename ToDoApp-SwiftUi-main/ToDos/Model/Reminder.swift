@@ -1,5 +1,3 @@
-
-// Created By S2G8
 import Foundation
 import SwiftData
 
@@ -7,7 +5,7 @@ import SwiftData
 final class Reminder {
     var name: String
     var isCompleted = false
-    var isUrgent = false // Add this property
+    var isUrgent = false
 
     init(name: String, isCompleted: Bool = false, isUrgent: Bool = false) {
         self.name = name

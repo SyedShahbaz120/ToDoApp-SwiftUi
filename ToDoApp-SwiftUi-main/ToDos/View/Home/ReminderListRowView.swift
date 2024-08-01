@@ -1,47 +1,7 @@
-////Created By S2G8 
-//import SwiftUI
-//import SwiftData
-//
-//struct ReminderListRowView: View {
-//    @Bindable var reminderList: ReminderList
-//    
-//   //this allowed user to add and delete task
-//    var body: some View {
-//        HStack {
-//            listIcon
-//                .frame(width: 36, height: 36)
-//                .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-//                .clipShape(Circle())
-//                .shadow(radius: 3)
-//            Text(reminderList.name)
-//            Spacer()
-//            Text("\(reminderList.reminder.count)")
-//                .font(.headline)
-//                .foregroundColor(.secondary)
-//        }
-//        .padding(.vertical, 8)
-//    }
-//    
-//    var listIcon: some View {
-//        Image(systemName: reminderList.iconName)
-//            .font(.system(size: 24))
-//            .foregroundColor(.white)
-//            .padding(8)
-//    }
-//}
-
-//
-//  ReminderListRowView.swift
-//  ToDos
-//
-//  Created by Urvish Patel on 2024-07-21.
-//
-
-import Foundation
 import SwiftUI
 import SwiftData
 
-struct reminderListRowView: View {
+struct ReminderListRowView: View {
     @Bindable var reminderList: ReminderList
 
     var body: some View {
@@ -53,13 +13,18 @@ struct reminderListRowView: View {
                 .shadow(radius: 3)
             Text(reminderList.name)
             Spacer()
+            if reminderList.reminder.contains(where: { $0.isUrgent }) {
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 10, height: 10)
+            }
             Text("\(reminderList.reminder.count)")
                 .font(.headline)
                 .foregroundColor(.secondary)
         }
         .padding(.vertical, 8)
     }
-    
+
     var listIcon: some View {
         Image(systemName: reminderList.iconName)
             .font(.system(size: 24))
@@ -67,4 +32,3 @@ struct reminderListRowView: View {
             .padding(8)
     }
 }
-

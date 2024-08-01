@@ -1,55 +1,34 @@
-////
-////  GraphView.swift
-////  ToDos
-////
-////  Created by Urvish Patel on 2024-07-21.
-////
-//
-//import Foundation
-
-//
-//  GraphView.swift
-//  ToDos
-//
-//  Created by Syed Shahbaz on 2024-07-04.
-//
-
-import Foundation
 import SwiftUI
 
 struct GraphView: View {
     var completed: Int
     var incomplete: Int
-    
+
     var body: some View {
         VStack {
-            Text("Reminders Completion Status")
+            Text("Tasks Overview")
                 .font(.headline)
-                .padding(.bottom, 10)
-            
+                .padding(.bottom, 8)
             HStack {
                 VStack {
                     Text("Completed")
-                        .font(.subheadline)
-                    Rectangle()
-                        .fill(Color.green.opacity(0.7))
-                        .frame(width: 50, height: CGFloat(completed) * 10)
                     Text("\(completed)")
+                        .font(.largeTitle)
+                        .foregroundColor(.green)
                 }
+                .padding()
                 VStack {
                     Text("Incomplete")
-                        .font(.subheadline)
-                    Rectangle()
-                        .fill(Color.red.opacity(0.7))
-                        .frame(width: 50, height: CGFloat(incomplete) * 10)
                     Text("\(incomplete)")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
                 }
+                .padding()
             }
         }
         .padding()
-        .background(Color(UIColor.secondarySystemGroupedBackground))
+        .background(Color(.systemGray6))
         .cornerRadius(10)
         .shadow(radius: 5)
     }
 }
-
