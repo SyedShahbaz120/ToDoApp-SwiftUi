@@ -8,6 +8,7 @@ struct HomeView: View {
     @State private var searchText = ""
     
     // Timer properties
+    
     @StateObject private var timerManager = TimerManager()
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
