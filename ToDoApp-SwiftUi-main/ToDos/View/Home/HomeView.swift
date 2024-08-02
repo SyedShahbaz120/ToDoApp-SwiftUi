@@ -8,7 +8,7 @@ struct HomeView: View {
     @State private var searchText = ""
     
     // Timer properties
-    
+
     @StateObject private var timerManager = TimerManager()
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -17,6 +17,8 @@ struct HomeView: View {
     
     // This will allow user to create and view a new entry of useful data
     let columns = [GridItem(.adaptive(minimum: 150))]
+
+    //fix some bugs
     
     var body: some View {
         NavigationStack(path: $path) {
