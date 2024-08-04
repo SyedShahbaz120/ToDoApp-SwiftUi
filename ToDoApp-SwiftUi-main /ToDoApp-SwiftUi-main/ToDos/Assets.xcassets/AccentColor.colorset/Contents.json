@@ -1,11 +1,31 @@
 {
-  "colors" : [
+  "colors": [
     {
-      "idiom" : "universal"
+      "idiom": "universal",
+      "color": {
+        "light": {
+          "color-space": "srgb",
+          "components": {
+            "red": 0.0,
+            "green": 0.5,
+            "blue": 1.0,
+            "alpha": 1
+          }
+        },
+        "dark": {
+          "color-space": "srgb",
+          "components": {
+            "red": 0.3,
+            "green": 0.7,
+            "blue": 1.0,
+            "alpha": 1
+          }
+        }
+      }
     }
   ],
-  "info" : {
-    "author" : "S2G8",
-    "version" : 1
+  "info": {
+    "author": "S2G8",
+    "version": 1
   }
 }

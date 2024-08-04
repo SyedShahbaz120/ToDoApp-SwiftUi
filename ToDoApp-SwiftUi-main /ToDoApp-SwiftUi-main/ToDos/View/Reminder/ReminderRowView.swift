@@ -1,12 +1,11 @@
-//Created By S2G8 
+
 import SwiftUI
 import SwiftData
 
 struct ReminderRowView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var reminder: Reminder
-    
-    //this is allowed user to add and delete task
+
     var body: some View {
         HStack {
             Button {
@@ -22,11 +21,16 @@ struct ReminderRowView: View {
             .buttonStyle(PlainButtonStyle())
             
             TextField("Enter reminder", text: $reminder.name)
-                .foregroundColor(reminder.isCompleted ? .secondary : .primary)
+                .foregroundColor(reminder.isCompleted ? .green : .red)  // Color coding
+
+            Spacer()
+
+            Toggle("", isOn: $reminder.isUrgent)
+                .labelsHidden()
         }
         .padding(.vertical, 8)
     }
-    //this is a test
+
     var filledReminderLabel: some View {
         Circle()
             .stroke(Color.primary, lineWidth: 2)
@@ -37,7 +41,7 @@ struct ReminderRowView: View {
             )
             .frame(width: 20, height: 20)
     }
-    
+
     var emptyReminderLabel: some View {
         Circle()
             .stroke(Color.secondary, lineWidth: 2)
@@ -45,24 +49,3 @@ struct ReminderRowView: View {
     }
 }
 
-// Previews
-import SwiftUI
-import SwiftData
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        do {
-            let config = ModelConfiguration(isStoredInMemoryOnly: true)
-            let container = try ModelContainer(for: ReminderList.self, configurations: config)
-            let example = ReminderList(name: "App Team", iconName: "iphone", reminder: [
-                Reminder(name: "Talk to Shahbaz"),
-                Reminder(name: "Collect Points")
-            ])
-            
-            return ReminderListRowView(reminderList: example)
-                .modelContainer(container)
-        } catch {
-            fatalError("Failed to create model container")
-        }
-    }
-}

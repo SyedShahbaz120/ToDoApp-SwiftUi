@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2744469F2C41CDAE00A6E0B6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744469E2C41CDAE00A6E0B6 /* SearchBar.swift */; };
-		2BFA88C12C5C579D0047D8DA /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA88C02C5C579D0047D8DA /* TimerManager.swift */; };
+		2BFA88C52C5EFD190047D8DA /* TimerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA88C42C5EFD190047D8DA /* TimerManger.swift */; };
 		5B9747822B6EB65800CBC46D /* ToDosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747812B6EB65800CBC46D /* ToDosApp.swift */; };
 		5B9747842B6EB65800CBC46D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747832B6EB65800CBC46D /* HomeView.swift */; };
 		5B9747862B6EB65900CBC46D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9747852B6EB65900CBC46D /* Assets.xcassets */; };
@@ -20,11 +19,12 @@
 		5B9747A42B6EC36900CBC46D /* ReminderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A32B6EC36900CBC46D /* ReminderRowView.swift */; };
 		5B9747A82B6EC76E00CBC46D /* ListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A72B6EC76E00CBC46D /* ListCardView.swift */; };
 		5B9747AA2B6ECB2C00CBC46D /* CreateSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */; };
+		5C49FF922C4DF448000F2767 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49FF912C4DF448000F2767 /* SearchBar.swift */; };
+		5C49FF942C4DF486000F2767 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49FF932C4DF486000F2767 /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2744469E2C41CDAE00A6E0B6 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		2BFA88C02C5C579D0047D8DA /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		2BFA88C42C5EFD190047D8DA /* TimerManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManger.swift; sourceTree = "<group>"; };
 		5B97477E2B6EB65800CBC46D /* ToDos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9747812B6EB65800CBC46D /* ToDosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosApp.swift; sourceTree = "<group>"; };
 		5B9747832B6EB65800CBC46D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -37,6 +37,8 @@
 		5B9747A32B6EC36900CBC46D /* ReminderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRowView.swift; sourceTree = "<group>"; };
 		5B9747A72B6EC76E00CBC46D /* ListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardView.swift; sourceTree = "<group>"; };
 		5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSectionView.swift; sourceTree = "<group>"; };
+		5C49FF912C4DF448000F2767 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		5C49FF932C4DF486000F2767 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +121,10 @@
 				5B9747832B6EB65800CBC46D /* HomeView.swift */,
 				5B9747A92B6ECB2C00CBC46D /* CreateSectionView.swift */,
 				5B97479F2B6EBD0900CBC46D /* ReminderListRowView.swift */,
-				2744469E2C41CDAE00A6E0B6 /* SearchBar.swift */,
 				5B9747A72B6EC76E00CBC46D /* ListCardView.swift */,
-				2BFA88C02C5C579D0047D8DA /* TimerManager.swift */,
+				5C49FF912C4DF448000F2767 /* SearchBar.swift */,
+				5C49FF932C4DF486000F2767 /* GraphView.swift */,
+				2BFA88C42C5EFD190047D8DA /* TimerManger.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -198,13 +201,14 @@
 			files = (
 				5B9747A22B6EBF8A00CBC46D /* ReminderListView.swift in Sources */,
 				5B9747AA2B6ECB2C00CBC46D /* CreateSectionView.swift in Sources */,
-				2BFA88C12C5C579D0047D8DA /* TimerManager.swift in Sources */,
 				5B9747A42B6EC36900CBC46D /* ReminderRowView.swift in Sources */,
+				2BFA88C52C5EFD190047D8DA /* TimerManger.swift in Sources */,
+				5C49FF942C4DF486000F2767 /* GraphView.swift in Sources */,
 				5B97479A2B6EBB3F00CBC46D /* Reminder.swift in Sources */,
 				5B9747A02B6EBD0900CBC46D /* ReminderListRowView.swift in Sources */,
 				5B9747842B6EB65800CBC46D /* HomeView.swift in Sources */,
 				5B9747822B6EB65800CBC46D /* ToDosApp.swift in Sources */,
-				2744469F2C41CDAE00A6E0B6 /* SearchBar.swift in Sources */,
+				5C49FF922C4DF448000F2767 /* SearchBar.swift in Sources */,
 				5B9747A82B6EC76E00CBC46D /* ListCardView.swift in Sources */,
 				5B97479C2B6EBBB100CBC46D /* ReminderList.swift in Sources */,
 			);

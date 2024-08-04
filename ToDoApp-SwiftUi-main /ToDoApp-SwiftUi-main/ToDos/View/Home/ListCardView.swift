@@ -1,11 +1,10 @@
-//Created By S2G8 
 import SwiftUI
 import SwiftData
 
 struct ListCardView: View {
     @Bindable var reminderList: ReminderList
     @State private var isActive = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Button {
@@ -26,11 +25,16 @@ struct ListCardView: View {
                     Text(reminderList.name)
                         .font(.body)
                         .foregroundColor(.secondary)
+                    if reminderList.reminder.contains(where: { $0.isUrgent }) {
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 10, height: 10)
+                    }
                 }
                 .padding(12)
                 .background(Color(UIColor.tertiarySystemFill))
                 .cornerRadius(10)
-                .shadow(color: Color.gray.opacity(0.3), radius: 3, x: 1, y: 2)
+                .shadow(radius: 2)
             }
             .buttonStyle(PlainButtonStyle())
             .background(
@@ -39,17 +43,14 @@ struct ListCardView: View {
                     isActive: $isActive,
                     label: { EmptyView() }
                 )
-                .opacity(0)
-                .frame(width: 0, height: 0)
-                .disabled(true)
+                .hidden()
             )
         }
     }
-    
+
     var listIcon: some View {
         Image(systemName: reminderList.iconName)
             .font(.system(size: 24))
             .foregroundColor(.white)
-            .padding(8)
     }
 }

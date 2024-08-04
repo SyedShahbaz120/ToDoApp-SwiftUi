@@ -1,4 +1,3 @@
-//Created By S2G8 
 import Foundation
 import SwiftData
 
