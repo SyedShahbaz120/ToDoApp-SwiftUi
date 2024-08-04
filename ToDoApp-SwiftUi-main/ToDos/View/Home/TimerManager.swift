@@ -4,7 +4,7 @@
 //
 //  Created by RENANYANG on 2024-08-01.
 //
-//this is to manage the timer,so user can set an countdown timer for the task
+
 import SwiftUI
 import Combine
 
@@ -33,3 +33,4 @@ class TimerManager: ObservableObject {
         remainingTime = 0
     }
 }
+
