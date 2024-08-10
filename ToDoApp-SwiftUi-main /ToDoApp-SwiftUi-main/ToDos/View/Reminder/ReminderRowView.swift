@@ -1,4 +1,3 @@
-
 import SwiftUI
 import SwiftData
 
@@ -48,4 +47,9 @@ struct ReminderRowView: View {
             .frame(width: 20, height: 20)
     }
 }
+
+
+
+
+
 

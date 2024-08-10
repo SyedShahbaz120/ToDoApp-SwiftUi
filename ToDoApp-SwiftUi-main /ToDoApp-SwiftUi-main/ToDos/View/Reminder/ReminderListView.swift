@@ -73,6 +73,9 @@ struct ReminderListView: View {
                 }
                 .padding()
             }
+            .onAppear {
+                loadReminderDetails()
+            }
         }
     }
 
@@ -95,9 +98,14 @@ struct ReminderListView: View {
 
     func editReminder(_ reminder: Reminder) {
         editedReminder = reminder
-        editText = reminder.name
-        isUrgent = reminder.isUrgent
         showEditView = true
+    }
+
+    func loadReminderDetails() {
+        if let reminder = editedReminder {
+            editText = reminder.name
+            isUrgent = reminder.isUrgent
+        }
     }
 
     func saveEdit() {
